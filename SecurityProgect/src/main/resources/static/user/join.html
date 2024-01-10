@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회원가입</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang&family=IBM+Plex+Sans+KR:wght@400;700&family=Noto+Sans+KR&display=swap" rel="stylesheet">
+<style type="text/css">
+
+* {
+font-family: 'Gowun Batang', serif;
+font-family: 'IBM Plex Sans KR', sans-serif;
+font-family: 'Noto Sans KR', sans-serif;
+}
+
+form{
+	text-align: center;
+}
+
+button{
+	margin-top: 20px;
+	font-weight: bold;
+	width: 70%;
+	padding: 10px;
+	font-size: 16px;
+}
+
+#joinform { 
+	width: 30%;
+	margin: auto;
+	margin-top: 250px;
+	font-family: 'IBM Plex Sans KR', sans-serif;
+}
+
+input{
+	width: 70%;
+	height: 40px;
+}
+
+input[type=radio] {
+	display: none;
+}
+
+input[type=radio] + label {
+	display: inline-block;
+	margin: -2px;
+	border: 1px solid gray;
+	width: 35%;
+	height: 30px;
+	text-align: center;
+	padding-top: 3px;
+	margin-left: 1px;
+}
+
+</style>
+
+<script type="text/javascript">
+
+function mck() {
+	console.log("남자 선택")
+	
+	let female = document.getElementById('female');
+	
+	if (female.style.backgroundColor  ='#d2d2d2') {
+		female.style.backgroundColor  ='';
+	}
+		
+	const male = 
+	document.getElementById('male');
+	
+	male.style.backgroundColor  ='#d2d2d2';
+
+
+}
+
+function fck() {
+	console.log("여자 선택")
+	
+	let memale = document.getElementById('male');
+	
+	if (male.style.backgroundColor  ='#d2d2d2') {
+		male.style.backgroundColor  ='';
+	}
+	
+	const female = 
+	document.getElementById('female');
+	
+	female.style.backgroundColor  ='#d2d2d2';	
+}
+
+function birthCk(){
+	const str = document.getElementById('userBirth').value;
+	
+	const str2 = str.replace(/(.{4})/g,"$1.")
+	
+	console.log(str2)
+	
+}
+
+
+</script>
+
+</head>
+
+
+<body>
+
+
+
+<div id="joinform">
+
+	<form action="/join" method="post">
+	<input type="text" id="userEmail" name="userEmail" placeholder="이메일">
+	<p></p>
+	
+	 <input type="text" id="userPw" name="userPw" placeholder="비밀번호"> 
+	 <p></p>
+	 
+	<input type="text" id="userName" name="userName" placeholder="이름">
+	<p></p>
+	
+	<input type="text" id="userBirth" name="userBirth"  placeholder="생년월일 8자리" onmouseout="birthCk();" >
+	<p></p> 
+	
+	<input type="radio" id= "m" name = "userGender" value="M" onclick="mck();"><label for="m" id="male">남자</label>
+	<input type="radio" id= "f" name = "userGender" value="F" onclick="fck();"><label for="f" id="female">여자</label>
+	<p></p>
+	
+	<button>가입</button>
+	</form>
+
+</div>
+
+</body>
+</html>

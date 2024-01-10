@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>로그인</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang&family=IBM+Plex+Sans+KR:wght@400;700&family=Noto+Sans+KR&display=swap" rel="stylesheet">
+
+<style type="text/css">
+#loginform { 
+	width: 30%;
+	margin: auto;
+	margin-top: 250px;
+ 	font-family: 'IBM Plex Sans KR', sans-serif; 
+}
+
+form {
+	text-align: center;
+}
+
+button{
+	margin-top: 20px;
+	font-weight: bold;
+	width: 70%;
+	padding: 10px;
+	font-size: 16px;
+}
+
+input{
+	width: 70%;
+	height: 40px;
+}
+
+
+</style>
+</head>
+<body>
+
+<div id="loginform">
+<form action="/login" method="post">
+<input type="text" placeholder="아이디" name="userEmail">
+<p></p>
+<input type="text" placeholder="비밀번호" name="userPw">
+<p></p>
+<button>로그인</button>
+</form>
+</div>
+
+</body>
+</html>
