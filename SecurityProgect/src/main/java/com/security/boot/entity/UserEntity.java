@@ -13,7 +13,7 @@ import lombok.ToString;
 
 @Entity
 @Getter
-//@Setter
+@Setter
 @Table(name = "user_tb")
 @ToString
 @SequenceGenerator(

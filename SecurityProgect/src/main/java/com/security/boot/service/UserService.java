@@ -17,11 +17,11 @@ public class UserService  {
 	public UserEntity save(UserEntity user) {
 		validateDuplicateUser(user);
 		
-//		System.out.print("생일결과 : " + user.getUserBirth());
-//		System.out.print("성별결과 : " + user.getUserGender());
-//		System.out.print("이메일결과 : " + user.getUserEmail());
-//		System.out.print("이름결과 : " + user.getUserName());
-//		System.out.print("비번결과 : " + user.getUserPw());
+		System.out.print("생일결과 : " + user.getUserBirth());
+		System.out.print("성별결과 : " + user.getUserGender());
+		System.out.print("이메일결과 : " + user.getUserEmail());
+		System.out.print("이름결과 : " + user.getUserName());
+		System.out.print("비번결과 : " + user.getUserPw());
 		
 		return userRepository.save(user);
 	}

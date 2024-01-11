@@ -1,18 +1,14 @@
 package com.security.boot.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Data	
+@Getter
+@Setter
 @NoArgsConstructor
 @ToString
-@AllArgsConstructor
-@RequiredArgsConstructor
 public class JoinRequestDto {
 
 	private String userEmail;

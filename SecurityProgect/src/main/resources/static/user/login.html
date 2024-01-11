@@ -39,11 +39,12 @@ input{
 <body>
 
 <div id="loginform">
-<form action="/login" method="post">
+<form action="/user/login" method="post">
 <input type="text" placeholder="아이디" name="userEmail">
 <p></p>
 <input type="text" placeholder="비밀번호" name="userPw">
 <p></p>
+<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 <button>로그인</button>
 </form>
 </div>

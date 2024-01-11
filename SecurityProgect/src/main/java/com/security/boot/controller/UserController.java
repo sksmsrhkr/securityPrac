@@ -6,19 +6,27 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import com.security.boot.dto.JoinRequestDto;
 import com.security.boot.entity.UserEntity;
+import com.security.boot.service.UserService;
 
 @Controller
-@SpringBootApplication(exclude = SecurityAutoConfiguration.class)
+//@SpringBootApplication(exclude = SecurityAutoConfiguration.class)
 public class UserController {
+	
+	private UserService userService;
 
+	@GetMapping("/")
+	public String main() {
+		return "/main.html";
+	}
+	
 	@GetMapping("/user/login")
 	public String login() {
 		return "/user/login.html";
 	}
+
 	
 	@GetMapping("/user/join")
 	public String joinForm() {
@@ -30,24 +38,28 @@ public class UserController {
 	
 		System.out.print("생일 : " + joinReq.toString());
 		System.out.print("성별 : " + joinReq.getUserEmail());
-//		System.out.print("이메일 : " + joinReq.getUserEmail());
-//		System.out.print("이름 : " + joinReq.getUserName());
-//		System.out.print("비번 : " + joinReq.getUserPw());
+		System.out.print("이메일 : " + joinReq.getUserEmail());
+		System.out.print("이름 : " + joinReq.getUserName());
+		System.out.print("비번 : " + joinReq.getUserPw());
 		
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		
 		UserEntity userEntity = new UserEntity();
 		
-//		userEntity.setUserPw(encoder.encode(joinReq.getUserPw()));
-//		userEntity.setUserEmail(joinReq.getUserEmail());
-//		userEntity.setUserName(joinReq.getUserName());
-//		userEntity.setUserGender(joinReq.getUserGender());
-//		userEntity.setUserBirth(joinReq.getUserBirth());
+		userEntity.setUserPw(encoder.encode(joinReq.getUserPw()));
+		userEntity.setUserEmail(joinReq.getUserEmail());
+		userEntity.setUserName(joinReq.getUserName());
+		userEntity.setUserGender(joinReq.getUserGender());
+		userEntity.setUserBirth(joinReq.getUserBirth());
 
-//		userService.save(userEntity);
+		userService.save(userEntity);
 
 		return "redirect:/";
 	}
 	
+	@GetMapping("/user/error")
+	public String error() {
+		return "/user/error.html";
+	}
 	
 }
