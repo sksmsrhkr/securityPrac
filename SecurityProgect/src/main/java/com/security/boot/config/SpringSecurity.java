@@ -37,11 +37,11 @@ public class SpringSecurity {
         )
        
         .formLogin(formLogin -> formLogin
-        		.loginPage("/user/login.html")
-        		.loginProcessingUrl("/user/login.html")
+        		.loginPage("/user/login")
+        		.loginProcessingUrl("/user/login")
         		.usernameParameter("userEmail")
 	        .passwordParameter("userPw")
-	        .failureUrl("/user/error.html")
+	        .failureUrl("/user/error")
 	        .defaultSuccessUrl("/board/list", true));
        
         return http.build();
@@ -52,4 +52,5 @@ public class SpringSecurity {
         return authenticationConfiguration.getAuthenticationManager();
     }
 
+    
 }

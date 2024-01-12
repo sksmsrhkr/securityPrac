@@ -19,18 +19,18 @@ public class UserController {
 
 	@GetMapping("/")
 	public String main() {
-		return "/main.html";
+		return "/main";
 	}
 	
 	@GetMapping("/user/login")
 	public String login() {
-		return "/user/login.html";
+		return "/user/login";
 	}
 
 	
 	@GetMapping("/user/join")
 	public String joinForm() {
-		return "/user/join.html";
+		return "/user/join";
 	}
 	
 	@PostMapping("/join")
@@ -59,7 +59,7 @@ public class UserController {
 	
 	@GetMapping("/user/error")
 	public String error() {
-		return "/user/error.html";
+		return "/user/error";
 	}
 	
 }

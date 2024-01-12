@@ -27,9 +27,11 @@ public class UserSecurityService implements UserDetailsService{
 	@Override
 	public UserDetails loadUserByUsername(String userEmail) throws UsernameNotFoundException{
 		Optional<UserEntity> userEntity = this.userRepository.findByUserEmail(userEmail);
+		
 		if(userEntity.isEmpty()) {
 			throw new UsernameNotFoundException("사용자를 찾을 수 없습니다");
 		}
+		
 		UserEntity _userEntity = userEntity.get();
 		List<GrantedAuthority> autorities = new ArrayList<GrantedAuthority>();
 		if("admin".equals(userEmail)) {
