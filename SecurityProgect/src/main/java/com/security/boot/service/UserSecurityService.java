@@ -14,7 +14,8 @@ import org.springframework.stereotype.Service;
 
 import com.security.boot.entity.UserEntity;
 import com.security.boot.repository.UserRepository;
-import com.security.boot.role.UserRole;
+import com.security.boot.role.Role;
+import com.security.boot.security.PrincipalDetails;
 
 import lombok.RequiredArgsConstructor;
 
@@ -26,19 +27,19 @@ public class UserSecurityService implements UserDetailsService{
 	
 	@Override
 	public UserDetails loadUserByUsername(String userEmail) throws UsernameNotFoundException{
-		Optional<UserEntity> userEntity = this.userRepository.findByUserEmail(userEmail);
+		UserEntity userEntity = userRepository.findByUserEmail(userEmail);
 		
-		if(userEntity.isEmpty()) {
+		if(userEntity == null) {
 			throw new UsernameNotFoundException("사용자를 찾을 수 없습니다");
 		}
 		
-		UserEntity _userEntity = userEntity.get();
-		List<GrantedAuthority> autorities = new ArrayList<GrantedAuthority>();
-		if("admin".equals(userEmail)) {
-			autorities.add(new SimpleGrantedAuthority(UserRole.ADMIN.getValue()));
-		} else {
-			autorities.add(new SimpleGrantedAuthority(UserRole.USER.getValue()));			
-		}
-		return new User(_userEntity.getUserEmail(),_userEntity.getUserPw(), autorities);
+//		UserEntity _userEntity = userEntity.get();
+//		List<GrantedAuthority> autorities = new ArrayList<GrantedAuthority>();
+//		if("admin".equals(userEmail)) {
+//			autorities.add(new SimpleGrantedAuthority(UserRole.ADMIN.getValue()));
+//		} else {
+//			autorities.add(new SimpleGrantedAuthority(UserRole.USER.getValue()));			
+//		}
+		return new PrincipalDetails(userEntity);
 	}
 }

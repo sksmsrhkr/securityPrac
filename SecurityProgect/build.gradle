@@ -28,6 +28,7 @@ dependencies {
 	compileOnly 'org.projectlombok:lombok' 
     annotationProcessor 'org.projectlombok:lombok' 
     runtimeOnly 'com.oracle.database.jdbc:ojdbc11'
+
 }
 
 tasks.named('test') {

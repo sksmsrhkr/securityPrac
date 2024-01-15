@@ -1,5 +1,6 @@
 package com.security.boot.service;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +13,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class UserService  {
 	
+	@Autowired
 	private UserRepository userRepository;
 
 	public UserEntity save(UserEntity user) {
@@ -27,10 +29,10 @@ public class UserService  {
 	}
 	
 	public void validateDuplicateUser(UserEntity user) {
-//		UserEntity findUser = userRepository.findByUserEmail(user.getUserEmail());
-//		if(findUser != null) {
-//			throw new IllegalStateException("이미 가입한 아이디입니다.");
-//		}
+		UserEntity findUser = userRepository.findByUserEmail(user.getUserEmail());
+		if(findUser != null) {
+			throw new IllegalStateException("이미 가입한 아이디입니다.");
+		}
 	}
 
 }

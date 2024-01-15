@@ -1,4 +1,4 @@
-package com.security.boot.config;
+package com.security.boot.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -10,11 +10,12 @@ import org.springframework.security.config.annotation.web.configurers.AbstractHt
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import lombok.AllArgsConstructor;
 
 @EnableWebSecurity
-@AllArgsConstructor
+//@AllArgsConstructor
 @Configuration
 public class SpringSecurity {
 
@@ -32,17 +33,24 @@ public class SpringSecurity {
         
         .authorizeHttpRequests((authorizeRequests) -> 
         	authorizeRequests
-        		.requestMatchers("/**", "/user/**").permitAll()
-				.anyRequest().authenticated()
+        	.requestMatchers("/user/join", "/").permitAll()
+        	.requestMatchers("/board/list").hasRole("USER")
+			.anyRequest().authenticated()
         )
        
         .formLogin(formLogin -> formLogin
         		.loginPage("/user/login")
+        		.permitAll()
         		.loginProcessingUrl("/user/login")
         		.usernameParameter("userEmail")
 	        .passwordParameter("userPw")
 	        .failureUrl("/user/error")
-	        .defaultSuccessUrl("/board/list", true));
+	        .defaultSuccessUrl("/board/list", true))
+        .logout((logout) -> logout
+                .logoutRequestMatcher(new AntPathRequestMatcher("/user/logout"))
+                .logoutSuccessUrl("/")
+                .invalidateHttpSession(true))
+        ;
        
         return http.build();
 	}

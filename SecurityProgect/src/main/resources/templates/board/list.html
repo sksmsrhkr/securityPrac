@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-로그인 성공!
+<h1 th:text="${name}">Name</h1>  님, 환영합니다!<br>
+<a href="/board/write">글 작성하기</a><br>
+<a href="/user/logout">로그아웃</a>
 </body>
 </html>
