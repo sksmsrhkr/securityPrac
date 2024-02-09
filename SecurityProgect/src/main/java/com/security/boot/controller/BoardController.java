@@ -7,15 +7,22 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import com.security.boot.security.PrincipalDetails;
 
+import jakarta.servlet.http.HttpSession;
+
 
 @Controller
 public class BoardController {
 
 	@GetMapping("/board/list")
-	public String boardList(@AuthenticationPrincipal PrincipalDetails userDetail, Model  model) {
-		System.out.println("이메일 : " + userDetail.getUsername());
-		String userEmail = userDetail.getUsername();
-		model.addAttribute("name", userEmail);
+	public String boardList(@AuthenticationPrincipal PrincipalDetails userDetail, Model  model, HttpSession session) {
+//		System.out.println("dddddddddddd dfsadfd 이메일 : " + userDetail.getUsername());
+	
+		if(userDetail != null) {
+			String userName = userDetail.getName();
+			model.addAttribute("name", userName);
+			session.setAttribute("isLogin", userName);
+		}
+		
 		
 		return "/board/list";
 	}

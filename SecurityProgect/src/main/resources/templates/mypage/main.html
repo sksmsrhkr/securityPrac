@@ -1,17 +1,18 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>마이페이지</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang&family=IBM+Plex+Sans+KR:wght@400;700&family=Noto+Sans+KR&display=swap" rel="stylesheet">
 <link th:href="@{/css/header.css}" rel="stylesheet">
 </head>
+</head>
 <body>
 <th:block th:replace="~{layout/commonHeader :: header}"></th:block>
-<br>
-<a href="/board/list">게시판</a>
-
+<h1 th:if="${name} != null" th:text="|${name}님|" ></h1> <br>
+<a href="/payment">포인트 충전</a>
 </body>
 </html>

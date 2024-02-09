@@ -45,7 +45,9 @@ input{
 <input type="text" placeholder="비밀번호" name="userPw">
 <p></p>
 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-<button>로그인</button>
+<button style="margin-bottom: 10px;">로그인</button>
+
+<a href="/oauth2/authorization/kakao"><img src="/image/kakao_login_medium_wide.png"></a>
 </form>
 </div>
 

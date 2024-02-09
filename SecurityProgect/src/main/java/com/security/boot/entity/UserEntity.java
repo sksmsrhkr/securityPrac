@@ -1,7 +1,7 @@
 package com.security.boot.entity;
 
+
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.security.boot.dto.JoinRequestDto;
 import com.security.boot.role.Role;
@@ -15,13 +15,19 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
 @Entity
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 @Table(name = "user_tb")
 @ToString
 @SequenceGenerator(
@@ -51,23 +57,17 @@ public class UserEntity extends BaseTimeEntity {
 	@Column
 	private String userBirth;
 	
+	@Column
+	private String userPhone;
+	
+	@Column
+	private String socialType;
+
+	@Column
+	private String socialId;
+	
 	@Enumerated(EnumType.STRING)
 	private Role role;
-	
-	public static UserEntity createUser(JoinRequestDto joinReqDto, BCryptPasswordEncoder encoder) {
-
-		UserEntity user = new UserEntity();
-		
-		user.setUserEmail(joinReqDto.getUserEmail());
-		user.setUserName(joinReqDto.getUserName());
-		user.setUserBirth(joinReqDto.getUserBirth());
-		user.setUserGender(joinReqDto.getUserGender());
-		String password = encoder.encode(joinReqDto.getUserPw());
-		user.setUserPw(password);
-		user.setRole(Role.USER);
-		return user;
-	
-	}
 
 }
 
