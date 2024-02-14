@@ -38,7 +38,7 @@ public class SpringSecurity {
         .authorizeHttpRequests((authorizeRequests) -> 
         	authorizeRequests
         	.requestMatchers("/image/**", "/css/**").permitAll()
-        	.requestMatchers("/user/**", "/", "/board/**", "/oauth2/kakao").permitAll()
+        	.requestMatchers("/user/**", "/", "/board/**", "/oauth2/kakao" , "/list").permitAll()
 //        	.requestMatchers("/board/list").hasRole("USER")
 			.anyRequest().authenticated()
         )

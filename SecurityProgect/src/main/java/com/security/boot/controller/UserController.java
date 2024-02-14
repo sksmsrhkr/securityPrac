@@ -50,7 +50,7 @@ public class UserController {
 	private UserRepository userRepository;
 	private PrincipalDetails principalDetails;
 
-	@GetMapping("/")
+	@GetMapping("/g")
 	public String main(@AuthenticationPrincipal PrincipalDetails principal, HttpSession session) {
 //		System.out.println("로그인 사용자 아이디: " +principal.getUsername());
 		if(principal != null) {
@@ -58,7 +58,7 @@ public class UserController {
 			System.out.println("로그인 완료");
 			session.setAttribute("isLogin", userName);
 		}
-		return "/main";
+		return "/list";
 	}
 	
 	@GetMapping("/user/login")

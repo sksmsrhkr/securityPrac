@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	   <table class="table table-horizontal table-bordered">
+            <tr>
+                <th>게시글 번호</th>
+                <th>제목</th>
+                <th>작성자</th>
+            </tr>
+            <tr th:each="post: ${postsPages}">
+                <td th:text="${post.productNo}"></td>
+                <td th:text="${post.title}"></td>
+<!--                 <a th:href="@{|/posts/update/${post.id}|(page=${postsPages.number + 1})}" th:text="${post.title}"></a></td> -->
+                <td th:text="${post.author}"></td>
+            </tr>
+        </table>
+</body>
+</html>

@@ -30,16 +30,16 @@ import lombok.ToString;
 @Builder
 @Table(name = "user_tb")
 @ToString
-@SequenceGenerator(
-	name = "user_seq_gen",
-	sequenceName = "user_no_seq",
-	initialValue = 1, allocationSize = 1)
+//@SequenceGenerator(
+//	name = "user_seq_gen",
+//	sequenceName = "user_no_seq",
+//	initialValue = 1, allocationSize = 1)
 
 public class UserEntity extends BaseTimeEntity {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE,
-	generator = "user_seq_gen")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+//	generator = "user_seq_gen")
 	private Long userNo;
 	
 	@Column(unique = true)
